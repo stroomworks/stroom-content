@@ -9,15 +9,15 @@ def DIST_DIR_NAME="${BUILD_DIR_NAME}/distributions"
 def ZIP_SOURCE_DIR_NAME="${BUILD_DIR_NAME}/zipSource"
 def DEP_SOURCE_DIR_NAME="${ZIP_SOURCE_DIR_NAME}/dependencies"
 
-//Validates all the uuids to make sure there are no dup uuids
-//for different entities. Also ensures any Folder entities with the 
-//same path have the same uuid
-//TODO the logic in this script should be rewritten in groovy and stuck in here
-task validateContent(type: Exec) {
-    def validationScript = './validateContentPacks.py'
-    executable = validationScript
-    args = ['--all']
-}
+////Validates all the uuids to make sure there are no dup uuids
+////for different entities. Also ensures any Folder entities with the
+////same path have the same uuid
+////TODO the logic in this script should be rewritten in groovy and stuck in here
+//task validateContent(type: Exec) {
+//    def validationScript = './validateContentPacks.py'
+//    executable = validationScript
+//    args = ['--all']
+//}
 
 task cleanRoot() {
     delete project.file(BUILD_DIR_NAME)
@@ -27,6 +27,7 @@ allprojects {
 }
 
 subprojects {
+    println "Configuring project ${project.name}"
 
     apply plugin: 'base'
 
@@ -106,68 +107,125 @@ subprojects {
         }
     }
 
-    task validateXmlSchemas() {
-        doLast {
-            //def dir = project.file(STROOM_CONTENT_DIR);
-            fileTree(dir: project.file(STROOM_CONTENT_DIR))
-                .include('**/*XMLSchema.data.xsd')
-                .each { xsdFile -> 
-                    def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
-                    def xsdPath = xsdFile.toPath()
-                    def relativeXsdPath = basePath.relativize(xsdPath)
+//    task validate() {
+//        dependsOn validateContent
+//    }
 
-                    def execResult = exec() {
-                        
-                        // xmlint is available in libxml2-utils
-                        // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
-                        // to define the location of the various xsd files. If we don't it will
-                        // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
-                        // people cache it.
-                        workingDir project.file(STROOM_CONTENT_DIR)
-                        environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
-                        executable 'xmllint'
-                        args '--noout', '--nowarning', '--schema', rootProject.file("XMLSchema.xsd"), relativeXsdPath
-                        ignoreExitValue true
-                    }
+    // Create an xsd validation task for each xsd file found
+    def xsdValidationTaskNo = 0
+    fileTree(dir: project.file(STROOM_CONTENT_DIR))
+        .include('**/*.xsd')
+        .each { xsdFile -> 
+            def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+            def xsdPath = xsdFile.toPath()
+            def relativeXsdPath = basePath.relativize(xsdPath)
+            //println "Found XSD ${xsdPath}"
 
-                    if (execResult.exitValue != 0) {
+            xsdValidationTaskNo++
+            def xsdValidationTask = tasks.create("xsdValidation_${xsdValidationTaskNo}", Exec) {
+                // xmlint is available in libxml2-utils
+                // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
+                // to define the location of the various xsd files. If we don't it will
+                // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
+                // people cache it.
+                workingDir project.file(STROOM_CONTENT_DIR)
+                environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
+                executable 'xmllint'
+                args '--noout', '--nowarning', '--schema', rootProject.file("XMLSchema.xsd"), relativeXsdPath
+                ignoreExitValue true
+                //store the output instead of printing to the console:
+                standardOutput = new ByteArrayOutputStream()
+                errorOutput = new ByteArrayOutputStream()
+
+                doLast {
+                    if (executionResult.get().exitValue != 0) {
+                        println "XSD failed validation: $relativeXmlPath\n${standardOutput}\n${errorOutput}"
                         throw new GradleException("Schema failed validation: $relativeXsdPath")
                     }
+                    //println "Validated XML Schema ${xsdPath}"
+                }
             }
-        }
+
+            //println "Registered task ${xsdValidationTask.name}"
+//            tasks.validate.dependsOn xsdValidationTask
     }
 
-    task validateXml() {
-        doLast {
-            //def dir = project.file(STROOM_CONTENT_DIR);
-            fileTree(dir: project.file(STROOM_CONTENT_DIR))
-                .include('**/*.xml')
-                .each { xmlFile -> 
-                    def xmlFileName = xmlFile.absolutePath
-                    def execResult = exec() {
-                        //xmlint is available in libxml2-utils
-                        executable 'xmllint'
-                        args '--noout', '--nowarning', xmlFileName
-                        ignoreExitValue true
-                    }
+    // Create an xml validation task for each xml file found
+    def xmlValidationTaskNo = 0
+    fileTree(dir: project.file(STROOM_CONTENT_DIR))
+        .include('**/*.xml')
+        .each { xmlFile -> 
+            def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+            def xmlPath = xmlFile.toPath()
+            def relativeXmlPath = basePath.relativize(xmlPath)
+            //println "Found XML ${xmlPath}"
 
-                    if (execResult.exitValue != 0) {
-                        throw new GradleException("XML file failed validation: $xmlFileName")
+            xmlValidationTaskNo++
+            def xmlValidationTask = tasks.create("xmlValidation_${xmlValidationTaskNo}", Exec) {
+                // xmlint is available in libxml2-utils
+                // we have to set XML_CATALOG_FILES so xmllint uses the catalog.xml file
+                // to define the location of the various xml files. If we don't it will
+                // get xml.xsd from w3.org and they impose an arbitrary 15s delay to make
+                // people cache it.
+                workingDir project.file(STROOM_CONTENT_DIR)
+                //environment XML_CATALOG_FILES: rootProject.file("catalog.xml")
+                executable 'xmllint'
+                args '--noout', '--nowarning', relativeXmlPath
+                ignoreExitValue true
+                //store the output instead of printing to the console:
+                standardOutput = new ByteArrayOutputStream()
+                errorOutput = new ByteArrayOutputStream()
+
+                doLast {
+                    if (executionResult.get().exitValue != 0) {
+                        println "XML failed validation: $relativeXmlPath\n${standardOutput}\n${errorOutput}"
+                        throw new GradleException("XML failed validation: $relativeXmlPath")
                     }
+                    //println "Validated XML Schema ${xmlPath}"
+                }
             }
-        }
+
+            //println "Registered task ${xmlValidationTask.name}"
+//            tasks.validate.dependsOn xmlValidationTask
+//            rootProject.tasks.validateContent.dependsOn xmlValidationTask
     }
 
-    task validate() {
-        dependsOn validateContent
-        dependsOn validateXmlSchemas
-        dependsOn validateXml
+    // Create a json validation task for each json file found
+    def jsonValidationTaskNo = 0
+    fileTree(dir: project.file(STROOM_CONTENT_DIR))
+        .include('**/*.json')
+        .each { jsonFile -> 
+            def basePath =  project.file(STROOM_CONTENT_DIR).toPath()
+            def jsonPath = jsonFile.toPath()
+            def relativeJsonPath = basePath.relativize(jsonPath)
+            //println "Found JSON ${jsonPath}"
+
+            jsonValidationTaskNo++
+            def jsonValidationTask = tasks.create("jsonValidation_${jsonValidationTaskNo}", Exec) {
+                workingDir project.file(STROOM_CONTENT_DIR)
+                executable 'python3'
+                args '-mjson.tool', relativeJsonPath
+                ignoreExitValue true
+                //store the output instead of printing to the console:
+                standardOutput = new ByteArrayOutputStream()
+                errorOutput = new ByteArrayOutputStream()
+
+                doLast {
+                    if (executionResult.get().exitValue != 0) {
+                        println "JSON failed validation: $relativeJsonPath\n${errorOutput}"
+                        throw new GradleException("JSON failed validation: $relativeJsonPath")
+                    }
+                    //println "Validated JSON Schema ${jsonPath}"
+                }
+            }
+
+            //println "Registered task ${jsonValidationTask.name}"
+//            tasks.validate.dependsOn jsonValidationTask
+//            rootProject.tasks.validateContent.dependsOn jsonValidationTask
     }
 
     build {
-        dependsOn validateContent
-        dependsOn validateXmlSchemas
-        dependsOn validateXml
+//        dependsOn validate
         dependsOn copyDeps
         dependsOn unzipPack
         dependsOn unzipDeps

@@ -9,7 +9,7 @@ The content is grouped into a number of _content packs_ which can each be built 
 If you are looking for visualisation content packs then see [stroom-visualisations-dev](https://github.com/gchq/stroom-visualisations-dev).
 
 #### Caution!
- 
+
 **Errors/problems will arise if you import an incompatible content pack into your version of Stroom.**
 
 If you wish to build a previous version of a particular content pack, you will need to `git checkout` the appropriately
@@ -28,32 +28,36 @@ The core XML Schemas required by Stroom for basic operation.
 
 #### Compatibility matrix
 
-| Pack version                                                                      | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x |
-| --------------------------------------------------------------------------------- | ------------ | ------------ | -------------|
-| [v2.2](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.2) | Y            | Y            | Y            |
-| [v2.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.1) | Y            | Y            | Y            |
-| [v2.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.0) | Y            | Y            | Y            |
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.1) | Y            | Y            | Y            |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.0) | Y            | Y            | Y            |
+| Pack version                                                                      | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x | Stroom 7.10.x |
+| --------------------------------------------------------------------------------- | ------------ | ------------ | -------------| --------------|
+| [v3.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v3.0) | ❌           | ❌           | ✔️            | ✔️             |
+| [v2.2](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.2) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.1) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v2.0) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.1) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/core-xml-schemas-v1.0) | ✔️            | ✔️            | ✔️            | ❌            |
 
 
 
-### [**event-logging-xml-schema**](./source/event-logging-xml-schema/README.md)
+### [**event-logging-xml-schema**](./source/event-logging-xml-schemas/README.md)
 
 An XML Schema standard for describing audit events.
+
+> Pack formally called `event-logging-schema`.
 
 
 #### Compatibility matrix
 
-| Pack version                                                                                  | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x |
-| --------------------------------------------------------------------------------------------- | ------------ | ------------ | -------------|
-| [v4.1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.1.0) | Y            | Y            | Y            |
-| [v4.0.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.0.0) | Y            | Y            | Y            |
-| [v3.4.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.4.2) | Y            | Y            | Y            |
-| [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3) | Y            | Y            | Y            |
-| [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2) | Y            | Y            | Y            |
-| [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1) | Y            | Y            | Y            |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)     | Y            | Y            | Y            |
+| Pack version                                                                                  | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x | Stroom 7.10.x |
+| --------------------------------------------------------------------------------------------- | ------------ | ------------ | -------------| --------------|
+| [v5.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schemas-v5.0)    | ❌           | ❌           | ✔️            | ✔️             |
+| [v4.1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.1.0) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v4.0.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v4.0.0) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.4.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.4.2) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.2.3](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.2.3) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.1.2](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.2) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v3.1.1](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v3.1.1) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/event-logging-xml-schema-v1.0)     | ✔️            | ✔️            | ✔️            | ❌            |
 
 
 
@@ -64,10 +68,11 @@ A set of _Dashboard_ entities for displaying various metrics about the state of 
 
 #### Compatibility matrix
 
-| Pack version                                                                         | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x |
-| ------------------------------------------------------------------------------------ | ------------ | ------------ | -------------|
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.1) | Y            | Y            | Y            |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.0) | Y            | Y            | Y            |
+| Pack version                                                                         | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x | Stroom 7.10.x |
+| ------------------------------------------------------------------------------------ | ------------ | ------------ | -------------| --------------|
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v2.0) | ❌           | ❌           | ✔️            | ✔️             |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.1) | ✔️            | ✔️            | ✔️            | ❌            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-dashboards-v1.0) | ✔️            | ✔️            | ✔️            | ❌            |
 
 
 
@@ -79,15 +84,16 @@ This pack was previously known as 'internal-statistics' so the versions in the m
 
 #### Compatibility matrix
 
-| Pack version                                                                             | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x |
-| ---------------------------------------------------------------------------------------- | ------------ | ------------ | ------------ |
-| [v2.3](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.3) | No           | Y            | Y            |
-| [v2.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.2) | No           | Y            | Y            |
-| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.1) | No           | Y            | Y            |
-| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.0) | No           | Y            | Y            |
-| [v1.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.2)     | Y            | No           | No           |
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.1)     | Y            | No           | No           |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.0)     | Y            | No           | No           |
+| Pack version                                                                             | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x | Stroom 7.10.x |
+| ---------------------------------------------------------------------------------------- | ------------ | ------------ | ------------ | ------------- |
+| [v3.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v3.0) | ❌           | ❌           | ✔️            | ✔️             |
+| [v2.3](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.3) | ❌           | ✔️            | ✔️            | ❌            |
+| [v2.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.2) | ❌           | ✔️            | ✔️            | ❌            |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.1) | ❌           | ✔️            | ✔️            | ❌            |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-sql-v2.0) | ❌           | ✔️            | ✔️            | ❌            |
+| [v1.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.2)     | ✔️            | ❌           | ❌           | ❌            |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.1)     | ✔️            | ❌           | ❌           | ❌            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-v1.0)     | ✔️            | ❌           | ❌           | ❌            |
 
 
 
@@ -100,24 +106,25 @@ A set of _StroomStatsStore_ entities for representing the internal statistics ge
 
 | Pack version                                                                                      | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x |
 | ------------------------------------------------------------------------------------------------- | ------------ | ------------ | ------------ |
-| [v2.3](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.3) | No           | Y            | Y            |
-| [v2.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.2) | No           | Y            | Y            |
-| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.1) | No           | Y            | Y            |
-| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.0) | No           | Y            | Y            |
+| [v2.3](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.3) | ❌           | ✔️            | ✔️            |
+| [v2.2](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.2) | ❌           | ✔️            | ✔️            |
+| [v2.1](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.1) | ❌           | ✔️            | ✔️            |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/internal-statistics-stroom-stats-v2.0) | ❌           | ✔️            | ✔️            |
 
 
 
-### [**standard-pipelines**](./source/standard-pipelines/README.md) 
+### [**standard-pipelines**](./source/standard-pipelines/README.md)
 
 A set of standard data format agnostic pipelines for processing data.
 
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  | Stroom 7.0.x |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------ |
-| [v0.4](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.4)                 | No             | Y             | Y            |
-| [v0.3](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.3)                 | No             | Y             | Y            |
-| [v0.2](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.2)                 | No             | Y             | Y            |
-| [v0.1](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.1)                 | No             | Y             | Y            |
+| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  | Stroom 7.0.x | Stroom 7.10.x |
+| --------------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------ | ------------- |
+| [v0.5](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.5)                 | ❌             | ❌            | ❌           | ✔️             |
+| [v0.4](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.4)                 | ❌             | ✔️             | ✔️            | ❌            |
+| [v0.3](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.3)                 | ❌             | ✔️             | ✔️            | ❌            |
+| [v0.2](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.2)                 | ❌             | ✔️             | ✔️            | ❌            |
+| [v0.1](https://github.com/gchq/stroom-content/releases/tag/standard-pipelines-v0.1)                 | ❌             | ✔️             | ✔️            | ❌            |
 
 
 
@@ -128,9 +135,10 @@ The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/
 
 #### Compatibility matrix
 
-| Pack version                                                                | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x |
-| --------------------------------------------------------------------------- | ------------ | ------------ | ------------ |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v1.0) | Y            | Y            | Y            |
+| Pack version                                                                | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x | Stroom 7.10.x |
+| --------------------------------------------------------------------------- | ------------ | ------------ | ------------ | ------------- |
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v2.0) | ❌           | ❌           | ❌           | ✔️             |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-101-v1.0) | ✔️            | ✔️            | ✔️            | ❌            |
 
 
 
@@ -138,41 +146,44 @@ The entities used in the [quick start guide](https://gchq.github.io/stroom-docs/
 
 #### Compatibility matrix
 
-| Pack version                                                                                 | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x |
-| -------------------------------------------------------------------------------------------- | ------------ | ------------ | -------------|
-| [v3.0-beta.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v3.0-beta.1)   | No           | No           | Y            |
-| [v2.0-alpha.5](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.5) | No           | Y            | Y            |
-| [v2.0-alpha.4](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.4) | No           | Y            | Y            |
-| [v2.0-alpha.3](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.3) | No           | Y            | Y            |
-| [v2.0-alpha.2](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.2) | No           | Y            | Y            |
-| [v2.0-alpha.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.1) | No           | Y            | Y            |
-| [v1.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.1)                 | No           | Y            | Y            |
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.0)                 | No           | Y            | Y            |
+| Pack version                                                                                 | Stroom 5.0.x | Stroom 6.0.x | Stroom 7.0.x | Stroom 7.10.x |
+| -------------------------------------------------------------------------------------------- | ------------ | ------------ | -------------| --------------|
+| [v4.0-beta.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v4.0-beta.1)   | ❌           | ❌           | ❌           | ✔️             |
+| [v3.0-beta.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v3.0-beta.1)   | ❌           | ❌           | ✔️            | ❌            |
+| [v2.0-alpha.5](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.5) | ❌           | ✔️            | ✔️            | ❌            |
+| [v2.0-alpha.4](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.4) | ❌           | ✔️            | ✔️            | ❌            |
+| [v2.0-alpha.3](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.3) | ❌           | ✔️            | ✔️            | ❌            |
+| [v2.0-alpha.2](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.2) | ❌           | ✔️            | ✔️            | ❌            |
+| [v2.0-alpha.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v2.0-alpha.1) | ❌           | ✔️            | ✔️            | ❌            |
+| [v1.1](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.1)                 | ❌           | ✔️            | ✔️            | ❌            |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/stroom-logs-v1.0)                 | ❌           | ✔️            | ✔️            | ❌            |
 
 
 
-### [**template-pipelines**](./source/template-pipelines/README.md) 
+### [**template-pipelines**](./source/template-pipelines/README.md)
 
 A set of template pipelines that other pipelines can inherit from.
 
 
-| Pack version                                                                             | Stroom 5.0.x   | Stroom 6.0.x  |Stroom 7.0.x |Stroom 7.1.x |Stroom 7.2.x |
-| ---------------------------------------------------------------------------------------- | -------------- | ------------- |-------------|-------------|-------------|
-| [v0.5](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.5)      | No             | No            | No          | No*         | Y           |
-| [v0.4.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.4.1)  | No             | No            | No          | No*         | Y           |
-| [v0.3](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.3)      | No             | No            | Y           | Y           | Y           |
-| [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)      | No             | Y             | Y           | Y           | Y           |
-| [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)      | No             | Y             | Y           | Y           | Y           |
+| Pack version                                                                             | Stroom 5.0.x   | Stroom 6.0.x  |Stroom 7.0.x |Stroom 7.1.x |Stroom 7.2.x |Stroom 7.10.x |
+| ---------------------------------------------------------------------------------------- | -------------- | ------------- |-------------|-------------|-------------|--------------|
+| [v0.6](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.6)      | ❌             | ❌            | ❌          | ❌          | ❌          | ✔️            |
+| [v0.5](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.5)      | ❌             | ❌            | ❌          | ❌          | ✔️           | ❌           |
+| [v0.4.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.4.1)  | ❌             | ❌            | ❌          | ❌          | ✔️           | ❌           |
+| [v0.3](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.3)      | ❌             | ❌            | ✔️           | ✔️           | ✔️           | ❌           |
+| [v0.2](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.2)      | ❌             | ✔️             | ✔️           | ✔️           | ✔️           | ❌           |
+| [v0.1](https://github.com/gchq/stroom-content/releases/tag/template-pipelines-v0.1)      | ❌             | ✔️             | ✔️           | ✔️           | ✔️           | ❌           |
 
 \* Stroom `v7.1-beta.3` onwards is compatible with this content pack, but it must not be used in `v7.1-beta.1` or `v7.1-beta.2`
 
-### [**example-index**](./source/example-index/README.md) 
+### [**example-index**](./source/example-index/README.md)
 
 A basic Stroom index designed for `event-logging` XML.
 
-| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  |Stroom 7.0.x |
-| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |-------------|
-| [v1.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v1.0)                      | No             | No            | Y           |
+| Pack version                                                                                        | Stroom 5.0.x   | Stroom 6.0.x  | Stroom 7.0.x | Stroom 7.10.x |
+| --------------------------------------------------------------------------------------------------- | -------------- | ------------- |--------------|---------------|
+| [v2.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v2.0)                      | ❌             | ❌            | ❌           | ✔️             |
+| [v1.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v1.0)                      | ❌             | ❌            | ✔️            | ❌            |
 
 
 ## Building the content packs
@@ -207,7 +218,7 @@ The build will place the following pairs of zip files in `./build/distributions`
 
 - `my-pack-name-all.zip`
 
-The `-all` variant contains all dependency packs and is therefore larger. 
+The `-all` variant contains all dependency packs and is therefore larger.
 The other zip just contains the named pack with no dependencies.
 
 
@@ -223,7 +234,10 @@ The content pack zip files can be imported into _Stroom_ by selecting _Import_ f
 
 ## Content pack development
 
-The _Stroom_ entities defined within _stroom-content-source/_ are all serialised forms, with XML as the serialisation format. Some entities consist of two files, one for the core entity and one for any significant payload, e.g. XSLT, JavaScript, JSON, etc. It is not recommended to create these entities by hand. The easiest way to create new content or to amend existing content is from within _Stroom_ and then use the Export function to export the content to its serialised form for inclusion in _stroom-content_.
+The _Stroom_ entities defined within _stroom-content-source/_ are all serialised forms, with XML as the serialisation format.
+Some entities consist of two files, one for the core entity and one for any significant payload, e.g. XSLT, JavaScript, JSON, etc.
+It is not recommended to create these entities by hand.
+The easiest way to create new content or to amend existing content is from within _Stroom_ and then use the Export function to export the content to its serialised form for inclusion in _stroom-content_.
 
 
 ### IMPORTANT - A word about UUIDs
@@ -252,7 +266,7 @@ The new content should be created in the chosen folder structure. Once the conte
 
 The _Export_ function will create a zip file containing all the serialised entities complete with the original path structure.
 You should create a directory under _stroom-content-source/_ with the name being the name of the content-pack.
-The content of the zip file should be unzipped into this directory. 
+The content of the zip file should be unzipped into this directory.
 
 
 ### Modifying existing content
