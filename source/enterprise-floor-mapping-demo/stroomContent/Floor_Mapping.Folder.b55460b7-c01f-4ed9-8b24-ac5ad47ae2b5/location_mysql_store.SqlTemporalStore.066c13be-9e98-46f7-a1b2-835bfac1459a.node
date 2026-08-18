@@ -1,0 +1,5 @@
+name=location_mysql_store
+path=/Floor Mapping/location_mysql_store
+type=SqlTemporalStore
+uuid=066c13be-9e98-46f7-a1b2-835bfac1459a
+version=V2

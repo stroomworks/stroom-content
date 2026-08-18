@@ -1,0 +1,18 @@
+{
+  "type" : "Feed",
+  "uuid" : "67afc3ab-3d7d-492b-b9b6-fba03212ef07",
+  "name" : "EVENTS_FEED",
+  "version" : "aa899095-f742-441f-8cd6-842aaceb70af",
+  "description" : "",
+  "classification" : "",
+  "encoding" : "UTF-8",
+  "contextEncoding" : "UTF-8",
+  "reference" : false,
+  "streamType" : "Raw Events",
+  "dataFormat" : "",
+  "contextFormat" : "",
+  "schema" : "",
+  "schemaVersion" : "",
+  "status" : "RECEIVE",
+  "volumeGroup" : ""
+}

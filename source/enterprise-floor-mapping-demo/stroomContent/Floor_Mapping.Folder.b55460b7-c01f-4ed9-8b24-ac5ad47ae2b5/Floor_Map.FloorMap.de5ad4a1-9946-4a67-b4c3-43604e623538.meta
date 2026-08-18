@@ -1,0 +1,87 @@
+{
+  "uuid" : "de5ad4a1-9946-4a67-b4c3-43604e623538",
+  "name" : "Floor Map",
+  "version" : "30169d58-000c-4a3c-b8b0-b7e8edfde1ff",
+  "matrix" : {
+    "a" : 1.0,
+    "b" : 0.0,
+    "c" : 0.0,
+    "d" : 1.0,
+    "e" : 0.0,
+    "f" : 0.0
+  },
+  "entityIdColumn" : "Entity ID",
+  "locationIdColumn" : "Location ID",
+  "factsStoreRef" : {
+    "type" : "SqlTemporalStore",
+    "uuid" : "3be9c7b5-8c4a-4998-bfc6-64cdf1c6a58b",
+    "name" : "map_mysql_store"
+  },
+  "eventsStoreRef" : {
+    "type" : "SqlTemporalStore",
+    "uuid" : "3be9c7b5-8c4a-4998-bfc6-64cdf1c6a58b",
+    "name" : "map_mysql_store"
+  },
+  "eventsQuery" : "from param('EventStore')\nselect EffectiveTime as \"Effective Time\",\n  Key as \"Entity ID\",\n  replace(jq(Value, '.location'), '\"', '') as \"Location ID\",\n  jq(Value, '.type') as \"Event Type\",\n  jq(Value, '.status') as \"Status\",\n  jq(Value, '.message') as \"Message\"",
+  "eventsQueryTimeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "eventsQueryTablePreferences" : { },
+  "valueFormat" : "JSON",
+  "valueSchema" : [ {
+    "path" : ".type",
+    "role" : "TYPE",
+    "displayName" : "Type"
+  }, {
+    "path" : ".name",
+    "role" : "LABEL",
+    "displayName" : "Name"
+  }, {
+    "path" : ".coords",
+    "role" : "POSITION",
+    "displayName" : "Coords"
+  }, {
+    "path" : ".img",
+    "role" : "IMAGE",
+    "displayName" : "Image"
+  }, {
+    "path" : ".tm-world-to-map",
+    "role" : "WORLD_TO_MAP"
+  }, {
+    "path" : ".tm-map-to-screen",
+    "role" : "MAP_TO_SCREEN",
+    "displayName" : ""
+  }, {
+    "path" : ".fill",
+    "role" : "FILL",
+    "displayName" : "Fill"
+  }, {
+    "path" : ".opacity",
+    "role" : "OPACITY",
+    "displayName" : "Opacity"
+  }, {
+    "path" : ".geometry",
+    "role" : "GEOMETRY",
+    "displayName" : "Geometry"
+  } ],
+  "typeStyles" : [ {
+    "type" : "background"
+  }, {
+    "type" : "area",
+    "colour" : "#1e88e5"
+  }, {
+    "type" : "computers",
+    "colour" : "#ff9500",
+    "icon" : "COMPUTER"
+  }, {
+    "type" : "gates",
+    "colour" : "#12ba1e",
+    "icon" : "GATE"
+  }, {
+    "type" : "person",
+    "colour" : "#0084ff",
+    "icon" : "PERSON"
+  } ],
+  "type" : "FloorMap"
+}
