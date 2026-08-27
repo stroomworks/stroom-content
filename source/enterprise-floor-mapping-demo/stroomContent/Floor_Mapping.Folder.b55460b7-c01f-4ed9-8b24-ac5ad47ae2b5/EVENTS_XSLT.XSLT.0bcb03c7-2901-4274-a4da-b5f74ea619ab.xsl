@@ -41,7 +41,7 @@
        <xsl:variable name="y" select="normalize-space(substring-after($coordsRest, ','))"/>
 
        <pb:temporal-state>
-           <pb:map>map_mysql_store</pb:map>
+           <pb:map>events_planb_store</pb:map>
            <pb:key><xsl:value-of select="$thingIdref"/></pb:key>
            <pb:time><xsl:value-of select="$fmtTimestamp"/></pb:time>
            <pb:value>

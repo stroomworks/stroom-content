@@ -46,43 +46,14 @@
                </pb:temporal-state>
            </xsl:when>
 
-           <!-- 2. Gates / Printers / Network-devices -> store in location_mysql_store as flat JSON string -->
-           <xsl:when test="$type = 'gate' or $type = 'network-device'">
-               <pb:temporal-state>
-                   <pb:map>location_mysql_store</pb:map>
-                   <pb:key><xsl:value-of select="$id"/></pb:key>
-                   <pb:time><xsl:value-of select="$fmtTimestamp"/></pb:time>
-                   <pb:value>{"name":"<xsl:value-of select="$name"/>","location":"<xsl:value-of select="$location"/>"}</pb:value>
-               </pb:temporal-state>
-
-               <!-- Parse coordinates and write to map_mysql_store for Facts tab static visualization -->
-               <xsl:variable name="mapId" select="normalize-space(substring-before($location, ','))"/>
-               <xsl:variable name="coordsRest" select="substring-after($location, ',')"/>
-               <xsl:variable name="x" select="normalize-space(substring-before($coordsRest, ','))"/>
-               <xsl:variable name="y" select="normalize-space(substring-after($coordsRest, ','))"/>
-
-               <pb:temporal-state>
-                   <pb:map>map_mysql_store</pb:map>
-                   <pb:key><xsl:value-of select="$id"/></pb:key>
-                   <pb:time><xsl:value-of select="$fmtTimestamp"/></pb:time>
-                   <pb:value>
-{
- "type": "<xsl:choose><xsl:when test="$type='gate'">gates</xsl:when><xsl:otherwise>computers</xsl:otherwise></xsl:choose>",
- "name": "<xsl:value-of select="$name"/>",
- "coords": [<xsl:choose><xsl:when test="$x"><xsl:value-of select="$x"/></xsl:when><xsl:otherwise>0.0</xsl:otherwise></xsl:choose>,<xsl:choose><xsl:when test="$y"><xsl:value-of select="$y"/></xsl:when><xsl:otherwise>0.0</xsl:otherwise></xsl:choose>],
- "maps": ["<xsl:value-of select="$mapId"/>"],
- "tm-world-to-map": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0]
-}
-                   </pb:value>
-               </pb:temporal-state>
-           </xsl:when>
-
-           <!-- 3. Background Images -> store in map_mysql_store -->
+           <!-- 2. Background Images -> store in facts_mysql_store.
+                  Tested before the positional catch-all below, which would
+                  otherwise swallow it. -->
            <xsl:when test="$type = 'background-image'">
                <xsl:variable name="mapId" select="normalize-space(substring-before($location, ','))"/>
 
                <pb:temporal-state>
-                   <pb:map>map_mysql_store</pb:map>
+                   <pb:map>facts_mysql_store</pb:map>
                    <pb:key><xsl:value-of select="$mapId"/></pb:key>
                    <pb:time><xsl:value-of select="$fmtTimestamp"/></pb:time>
                    <pb:value>
@@ -93,6 +64,64 @@
  "coords": [0.0, 0.0],
  "tm-world-to-map": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
  "tm-map-to-screen": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+}
+                   </pb:value>
+               </pb:temporal-state>
+           </xsl:when>
+
+           <!-- 3. Anything else that has a location is a positional object:
+                  gates, network-devices, cameras, servers, rooms, desks, and
+                  any new type the feed introduces later.
+
+                  Every one of these must land in location_mysql_store, because
+                  EVENTS_XSLT does stroom:lookup('location_mysql_store', ...) on
+                  the event's location-idref. A type missing here produces
+                  "No effective entries found in any of the reference stores"
+                  for every event that references it.
+
+                  The test fails closed: a record with no type or no location
+                  compares against an empty sequence, evaluates false, and is
+                  skipped rather than written malformed. -->
+           <xsl:when test="$type and $location">
+               <pb:temporal-state>
+                   <pb:map>location_mysql_store</pb:map>
+                   <pb:key><xsl:value-of select="$id"/></pb:key>
+                   <pb:time><xsl:value-of select="$fmtTimestamp"/></pb:time>
+                   <pb:value>{"name":"<xsl:value-of select="$name"/>","location":"<xsl:value-of select="$location"/>"}</pb:value>
+               </pb:temporal-state>
+
+               <!-- Parse coordinates and write to facts_mysql_store for Facts tab static visualization -->
+               <xsl:variable name="mapId" select="normalize-space(substring-before($location, ','))"/>
+               <xsl:variable name="coordsRest" select="substring-after($location, ',')"/>
+               <xsl:variable name="x" select="normalize-space(substring-before($coordsRest, ','))"/>
+               <xsl:variable name="y" select="normalize-space(substring-after($coordsRest, ','))"/>
+
+               <!-- Map the source type onto a floor-map layer name. Only
+                    background, person and area are reserved by the FloorMap
+                    doc; every other value becomes its own styleable layer. -->
+               <xsl:variable name="layer">
+                   <xsl:choose>
+                       <xsl:when test="$type = 'gate'">gates</xsl:when>
+                       <xsl:when test="$type = 'network-device'">computers</xsl:when>
+                       <xsl:when test="$type = 'camera'">cameras</xsl:when>
+                       <xsl:when test="$type = 'server'">servers</xsl:when>
+                       <xsl:when test="$type = 'room'">rooms</xsl:when>
+                       <xsl:when test="$type = 'desk'">desks</xsl:when>
+                       <xsl:otherwise>objects</xsl:otherwise>
+                   </xsl:choose>
+               </xsl:variable>
+
+               <pb:temporal-state>
+                   <pb:map>facts_mysql_store</pb:map>
+                   <pb:key><xsl:value-of select="$id"/></pb:key>
+                   <pb:time><xsl:value-of select="$fmtTimestamp"/></pb:time>
+                   <pb:value>
+{
+ "type": "<xsl:value-of select="$layer"/>",
+ "name": "<xsl:value-of select="$name"/>",
+ "coords": [<xsl:choose><xsl:when test="$x"><xsl:value-of select="$x"/></xsl:when><xsl:otherwise>0.0</xsl:otherwise></xsl:choose>,<xsl:choose><xsl:when test="$y"><xsl:value-of select="$y"/></xsl:when><xsl:otherwise>0.0</xsl:otherwise></xsl:choose>],
+ "maps": ["<xsl:value-of select="$mapId"/>"],
+ "tm-world-to-map": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0]
 }
                    </pb:value>
                </pb:temporal-state>

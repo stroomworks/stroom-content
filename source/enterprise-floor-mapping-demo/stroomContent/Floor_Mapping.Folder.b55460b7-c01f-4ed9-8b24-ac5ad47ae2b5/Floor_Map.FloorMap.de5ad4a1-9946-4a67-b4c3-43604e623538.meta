@@ -1,7 +1,8 @@
 {
   "uuid" : "de5ad4a1-9946-4a67-b4c3-43604e623538",
   "name" : "Floor Map",
-  "version" : "30169d58-000c-4a3c-b8b0-b7e8edfde1ff",
+  "version" : "8cc8bb64-c667-445b-97b2-149826589074",
+  "description" : "",
   "matrix" : {
     "a" : 1.0,
     "b" : 0.0,
@@ -15,12 +16,12 @@
   "factsStoreRef" : {
     "type" : "SqlTemporalStore",
     "uuid" : "3be9c7b5-8c4a-4998-bfc6-64cdf1c6a58b",
-    "name" : "map_mysql_store"
+    "name" : "facts_mysql_store"
   },
   "eventsStoreRef" : {
-    "type" : "SqlTemporalStore",
-    "uuid" : "3be9c7b5-8c4a-4998-bfc6-64cdf1c6a58b",
-    "name" : "map_mysql_store"
+    "type" : "PlanB",
+    "uuid" : "17e21f76-1fa3-4723-a277-b0ee122e2cc7",
+    "name" : "events_planb_store"
   },
   "eventsQuery" : "from param('EventStore')\nselect EffectiveTime as \"Effective Time\",\n  Key as \"Entity ID\",\n  replace(jq(Value, '.location'), '\"', '') as \"Location ID\",\n  jq(Value, '.type') as \"Event Type\",\n  jq(Value, '.status') as \"Status\",\n  jq(Value, '.message') as \"Message\"",
   "eventsQueryTimeRange" : {
@@ -83,5 +84,6 @@
     "colour" : "#0084ff",
     "icon" : "PERSON"
   } ],
+  "groups" : [ ],
   "type" : "FloorMap"
 }

@@ -20,9 +20,9 @@
       "type" : "XSLTFilter",
       "name" : "XSLT Filter"
     }, {
-      "id" : "DDFC67A9-3FB8-470C-9BF2-14B3252C5CB5",
-      "type" : "SqlStoreFilter",
-      "name" : "SQL Store Filter"
+      "id" : "D7E4C7F1-943D-4E1A-B55E-DDDEF4581CB7",
+      "type" : "PlanBFilter",
+      "name" : "Plan B Filter"
     } ]
   },
   "properties" : {
@@ -74,7 +74,7 @@
       "to" : "05D027B8-E1A6-4503-B52D-5F20180A2D2A"
     }, {
       "from" : "05D027B8-E1A6-4503-B52D-5F20180A2D2A",
-      "to" : "DDFC67A9-3FB8-470C-9BF2-14B3252C5CB5"
+      "to" : "D7E4C7F1-943D-4E1A-B55E-DDDEF4581CB7"
     } ]
   }
 }
