@@ -1,0 +1,6 @@
+{
+  "type" : "SqlTemporalStore",
+  "uuid" : "8de52ae8-337c-4e7f-8222-2cd3fe12019a",
+  "name" : "floor_map_facts",
+  "version" : "3b36c73f-7f6c-4a0f-974e-3d983e148c17"
+}

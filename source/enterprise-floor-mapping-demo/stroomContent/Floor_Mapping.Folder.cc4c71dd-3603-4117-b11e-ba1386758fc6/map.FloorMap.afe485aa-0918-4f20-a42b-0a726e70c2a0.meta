@@ -1,0 +1,135 @@
+{
+  "uuid" : "afe485aa-0918-4f20-a42b-0a726e70c2a0",
+  "name" : "map",
+  "version" : "84b66d6d-d743-4950-a417-07ee96d60e00",
+  "matrix" : {
+    "a" : 1.0,
+    "b" : 0.0,
+    "c" : 0.0,
+    "d" : 1.0,
+    "e" : 0.0,
+    "f" : 0.0
+  },
+  "eventColumns" : {
+    "entries" : [ {
+      "role" : "ENTITY_ID",
+      "column" : "Entity ID"
+    }, {
+      "role" : "LOCATION",
+      "column" : "Location"
+    }, {
+      "role" : "LOCATION_REF",
+      "column" : "Location Ref"
+    }, {
+      "role" : "TYPE",
+      "column" : "Type"
+    } ]
+  },
+  "factsStoreRef" : {
+    "type" : "SqlTemporalStore",
+    "uuid" : "8de52ae8-337c-4e7f-8222-2cd3fe12019a",
+    "name" : "floor_map_facts"
+  },
+  "eventsStoreRef" : {
+    "type" : "FloorMapEventStore",
+    "uuid" : "64918035-f346-4a9b-bb62-e864d2ebca53",
+    "name" : "floor_map_events"
+  },
+  "eventsQuery" : "from param('EventStore')\nselect EffectiveTime as \"Effective Time\",\n  Key as \"Entity ID\",\n  jq(Value, '.location') as \"Location\",\n  jq(Value, '.locationRef') as \"Location Ref\",\n  jq(Value, '.type') as \"Type\",\n  jq(Value, '.status') as \"Status\",\n  jq(Value, '.message') as \"Message\"",
+  "histogramQuery" : "from param('EventStore')\neval bucket = floorTime(EffectiveTime, param('bucketWidth'))\ngroup by bucket\nsort by bucket\nselect bucket, count()",
+  "extentQuery" : "from param('EventStore')\neval allRows = 1\ngroup by allRows\nselect allRows, min(EffectiveTime), max(EffectiveTime)",
+  "eventsQueryTimeRange" : {
+    "name" : "All time",
+    "condition" : "BETWEEN"
+  },
+  "eventsQueryTablePreferences" : { },
+  "valueFormat" : "JSON",
+  "valueSchema" : [ {
+    "path" : ".type",
+    "role" : "TYPE",
+    "displayName" : "Type"
+  }, {
+    "path" : ".name",
+    "role" : "LABEL",
+    "displayName" : "Name"
+  }, {
+    "path" : ".coords",
+    "role" : "POSITION",
+    "displayName" : "Coords"
+  }, {
+    "path" : ".img",
+    "role" : "IMAGE",
+    "displayName" : "Image"
+  }, {
+    "path" : ".tm-world-to-map",
+    "role" : "WORLD_TO_MAP"
+  }, {
+    "path" : ".geometry",
+    "role" : "GEOMETRY",
+    "displayName" : "Geometry"
+  }, {
+    "path" : ".fill",
+    "role" : "FILL",
+    "displayName" : "Fill"
+  }, {
+    "path" : ".opacity",
+    "role" : "OPACITY",
+    "displayName" : "Opacity"
+  }, {
+    "path" : ".status",
+    "role" : "STATUS",
+    "displayName" : "Status"
+  } ],
+  "typeStyles" : [ {
+    "type" : "background"
+  }, {
+    "type" : "area"
+  }, {
+    "type" : "desk",
+    "colour" : "#10a1ea",
+    "icon" : "COMPUTER"
+  }, {
+    "type" : "person",
+    "colour" : "#1daa13",
+    "icon" : "PERSON"
+  }, {
+    "type" : "vehicle",
+    "colour" : "#eed111",
+    "icon" : "VEHICLE"
+  }, {
+    "type" : "cameras",
+    "colour" : "#c01b1b",
+    "icon" : "CAMERA"
+  }, {
+    "type" : "computers",
+    "colour" : "#e27d08",
+    "icon" : "COMPUTER"
+  }, {
+    "type" : "desks",
+    "colour" : "#e1740e",
+    "icon" : "COMPUTER"
+  }, {
+    "type" : "gates",
+    "colour" : "#a50feb",
+    "icon" : "GATE"
+  }, {
+    "type" : "rooms",
+    "colour" : "#350be0",
+    "icon" : "DOOR"
+  }, {
+    "type" : "servers",
+    "colour" : "#ddcb0e",
+    "icon" : "SERVER"
+  } ],
+  "groups" : [ {
+    "id" : "group-11159",
+    "name" : "Servers",
+    "colour" : "#8e24aa",
+    "memberIds" : [ "dc-rack-a01", "dc-rack-a02", "dc-rack-a03", "dc-rack-a04", "dc-rack-a05", "dc-rack-a06", "dc-rack-a07", "dc-rack-a08", "dc-rack-a09", "dc-rack-a10", "dc-rack-b01", "dc-rack-b02", "dc-rack-b03", "dc-rack-b04", "dc-rack-b05", "dc-rack-b06", "dc-rack-b07", "dc-rack-b08", "dc-rack-b09", "dc-rack-b10", "dc-rack-c01", "dc-rack-c02", "dc-rack-c03", "dc-rack-c04", "dc-rack-c05", "dc-rack-c06", "dc-rack-c07", "dc-rack-c08", "dc-rack-c09", "dc-rack-c10" ]
+  } ],
+  "measurementUnits" : {
+    "unit" : "CENTIMETRE",
+    "unitsPerMapUnit" : 0.7279512194534155
+  },
+  "type" : "FloorMap"
+}

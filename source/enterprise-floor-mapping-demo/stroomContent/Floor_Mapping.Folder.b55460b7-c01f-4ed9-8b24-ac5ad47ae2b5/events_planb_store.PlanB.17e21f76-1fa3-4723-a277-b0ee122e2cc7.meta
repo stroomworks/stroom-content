@@ -1,7 +1,0 @@
-{
-  "type" : "PlanB",
-  "uuid" : "17e21f76-1fa3-4723-a277-b0ee122e2cc7",
-  "name" : "events_planb_store",
-  "version" : "11ec0658-3ee6-437e-9ddd-e1528bc82e90",
-  "stateType" : "TEMPORAL_STATE"
-}

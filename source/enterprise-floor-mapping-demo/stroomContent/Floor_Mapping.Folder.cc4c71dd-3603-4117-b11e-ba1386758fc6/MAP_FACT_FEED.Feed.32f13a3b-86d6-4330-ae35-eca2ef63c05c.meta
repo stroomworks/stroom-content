@@ -1,0 +1,18 @@
+{
+  "type" : "Feed",
+  "uuid" : "32f13a3b-86d6-4330-ae35-eca2ef63c05c",
+  "name" : "MAP_FACT_FEED",
+  "version" : "9d97d9ce-60d3-4bf4-b2a9-c78eda8c0bcd",
+  "description" : "",
+  "classification" : "",
+  "encoding" : "UTF-8",
+  "contextEncoding" : "UTF-8",
+  "reference" : false,
+  "streamType" : "Raw Events",
+  "dataFormat" : "",
+  "contextFormat" : "",
+  "schema" : "",
+  "schemaVersion" : "",
+  "status" : "RECEIVE",
+  "volumeGroup" : ""
+}

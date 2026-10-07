@@ -1,0 +1,50 @@
+{
+  "type" : "FloorMapEventStore",
+  "uuid" : "64918035-f346-4a9b-bb62-e864d2ebca53",
+  "name" : "floor_map_events",
+  "version" : "3dd020a5-f3c2-4be1-b02c-660c0ae405bd",
+  "stateType" : "TEMPORAL_STATE",
+  "settings" : {
+    "type" : "temporalState",
+    "maxStoreSize" : 10737418240,
+    "synchroniseMerge" : false,
+    "overwrite" : true,
+    "retention" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "YEARS"
+      },
+      "checkInterval" : {
+        "time" : 1,
+        "timeUnit" : "HOURS"
+      },
+      "useStateTime" : false
+    },
+    "snapshotSettings" : {
+      "useSnapshotsForLookup" : false,
+      "useSnapshotsForGet" : false,
+      "useSnapshotsForQuery" : false
+    },
+    "condense" : {
+      "enabled" : false,
+      "duration" : {
+        "time" : 1,
+        "timeUnit" : "DAYS"
+      },
+      "checkInterval" : {
+        "time" : 1,
+        "timeUnit" : "HOURS"
+      }
+    },
+    "keySchema" : {
+      "keyType" : "TERMINATED_STRING",
+      "hashLength" : "INTEGER",
+      "temporalPrecision" : "MILLISECOND"
+    },
+    "valueSchema" : {
+      "stateValueType" : "VARIABLE",
+      "hashLength" : "INTEGER"
+    }
+  }
+}

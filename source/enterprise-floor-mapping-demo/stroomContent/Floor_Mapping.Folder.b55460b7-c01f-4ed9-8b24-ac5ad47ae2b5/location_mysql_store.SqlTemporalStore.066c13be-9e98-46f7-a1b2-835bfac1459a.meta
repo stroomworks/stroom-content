@@ -1,6 +1,0 @@
-{
-  "type" : "SqlTemporalStore",
-  "uuid" : "066c13be-9e98-46f7-a1b2-835bfac1459a",
-  "name" : "location_mysql_store",
-  "version" : "00246bec-28f7-408d-b90d-d9acccc829f7"
-}

@@ -1,0 +1,34 @@
+{
+  "uuid" : "c19193e8-4efe-4f1c-b46c-a6f77c073f7f",
+  "queryData" : {
+    "dataSource" : {
+      "type" : "StreamStore",
+      "uuid" : "StreamStore",
+      "name" : "Stream Store"
+    },
+    "expression" : {
+      "type" : "operator",
+      "children" : [ {
+        "type" : "term",
+        "field" : "Feed",
+        "condition" : "IS_DOC_REF",
+        "value" : "MAP_EVENT_FEED",
+        "docRef" : {
+          "type" : "Feed",
+          "uuid" : "19fbaadc-c03e-4ff9-a3ec-a5955006b8ed",
+          "name" : "MAP_EVENT_FEED"
+        }
+      } ]
+    }
+  },
+  "priority" : 10,
+  "maxProcessingTasks" : 0,
+  "reprocess" : false,
+  "enabled" : true,
+  "deleted" : false,
+  "export" : true,
+  "processorType" : "PIPELINE",
+  "processorUuid" : "d0d69e5b-8b2f-4197-93c2-98a619c6c674",
+  "pipelineUuid" : "d193d8ae-47ad-4ca5-ac85-85b6a8139621",
+  "pipelineName" : "MAP_EVENT_PIPELINE"
+}

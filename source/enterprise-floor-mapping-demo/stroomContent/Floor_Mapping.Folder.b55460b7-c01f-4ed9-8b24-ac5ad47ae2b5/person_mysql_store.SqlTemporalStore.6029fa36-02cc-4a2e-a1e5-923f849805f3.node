@@ -1,5 +1,0 @@
-name=person_mysql_store
-path=/Floor Mapping/person_mysql_store
-type=SqlTemporalStore
-uuid=6029fa36-02cc-4a2e-a1e5-923f849805f3
-version=V2
