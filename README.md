@@ -185,6 +185,15 @@ A basic Stroom index designed for `event-logging` XML.
 | [v2.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v2.0)                      | ❌             | ❌            | ❌           | ✔️             |
 | [v1.0](https://github.com/gchq/stroom-content/releases/tag/example-index-v1.0)                      | ❌             | ❌            | ✔️            | ❌            |
 
+### [**enterprise-floor-mapping-demo**](./source/enterprise-floor-mapping-demo/)
+
+A demonstration of floor mapping in _Stroom_, including feeds, pipelines and XSLT translations for loading map events and facts, along with a _FloorMap_ and its associated stores.
+
+Test data for the demo:
+
+- [events_showcase.csv](./source/enterprise-floor-mapping-demo/test-data/events_showcase.csv) - sample event data for the `MAP_EVENT_FEED` feed.
+- [facts_showcase.csv](./source/enterprise-floor-mapping-demo/test-data/facts_showcase.csv) - sample fact data for the `MAP_FACT_FEED` feed.
+
 
 ## Building the content packs
 
