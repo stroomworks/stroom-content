@@ -1,5 +1,5 @@
 name=floor_map_facts
-path=/Floor Mapping/floor_map_facts
+path=/Enterprise Floor Mapping Demo/floor_map_facts
 type=SqlTemporalStore
 uuid=8de52ae8-337c-4e7f-8222-2cd3fe12019a
 version=V2

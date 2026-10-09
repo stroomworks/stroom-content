@@ -1,5 +1,5 @@
 name=floor_map_events
-path=/Floor Mapping/floor_map_events
+path=/Enterprise Floor Mapping Demo/floor_map_events
 type=FloorMapEventStore
 uuid=64918035-f346-4a9b-bb62-e864d2ebca53
 version=V2

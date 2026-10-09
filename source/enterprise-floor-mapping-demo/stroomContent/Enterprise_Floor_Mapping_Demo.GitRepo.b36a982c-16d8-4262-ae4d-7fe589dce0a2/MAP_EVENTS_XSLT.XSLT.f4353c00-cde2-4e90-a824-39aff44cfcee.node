@@ -1,5 +1,5 @@
 name=MAP_EVENTS_XSLT
-path=/Floor Mapping/MAP_EVENTS_XSLT
+path=/Enterprise Floor Mapping Demo/MAP_EVENTS_XSLT
 type=XSLT
 uuid=f4353c00-cde2-4e90-a824-39aff44cfcee
 version=V2

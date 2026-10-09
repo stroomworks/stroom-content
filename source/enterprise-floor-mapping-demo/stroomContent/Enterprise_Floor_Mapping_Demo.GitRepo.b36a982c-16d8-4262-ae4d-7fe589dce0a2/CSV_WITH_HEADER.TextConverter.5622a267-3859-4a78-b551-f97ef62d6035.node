@@ -1,5 +1,5 @@
 name=CSV_WITH_HEADER
-path=/Floor Mapping/CSV_WITH_HEADER
+path=/Enterprise Floor Mapping Demo/CSV_WITH_HEADER
 type=TextConverter
 uuid=5622a267-3859-4a78-b551-f97ef62d6035
 version=V2

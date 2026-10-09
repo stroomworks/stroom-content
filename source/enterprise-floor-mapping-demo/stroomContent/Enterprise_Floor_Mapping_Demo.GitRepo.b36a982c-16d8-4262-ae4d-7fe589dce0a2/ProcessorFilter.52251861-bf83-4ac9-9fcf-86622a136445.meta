@@ -1,5 +1,5 @@
 {
-  "uuid" : "c19193e8-4efe-4f1c-b46c-a6f77c073f7f",
+  "uuid" : "52251861-bf83-4ac9-9fcf-86622a136445",
   "queryData" : {
     "dataSource" : {
       "type" : "StreamStore",
@@ -12,11 +12,11 @@
         "type" : "term",
         "field" : "Feed",
         "condition" : "IS_DOC_REF",
-        "value" : "MAP_EVENT_FEED",
+        "value" : "MAP_FACT_FEED",
         "docRef" : {
           "type" : "Feed",
-          "uuid" : "19fbaadc-c03e-4ff9-a3ec-a5955006b8ed",
-          "name" : "MAP_EVENT_FEED"
+          "uuid" : "32f13a3b-86d6-4330-ae35-eca2ef63c05c",
+          "name" : "MAP_FACT_FEED"
         }
       } ]
     }
@@ -28,7 +28,8 @@
   "deleted" : false,
   "export" : true,
   "processorType" : "PIPELINE",
-  "processorUuid" : "d0d69e5b-8b2f-4197-93c2-98a619c6c674",
-  "pipelineUuid" : "d193d8ae-47ad-4ca5-ac85-85b6a8139621",
-  "pipelineName" : "MAP_EVENT_PIPELINE"
+  "processorUuid" : "e72a0c0c-bce0-49fb-a04d-3a9b7bc0eeeb",
+  "pipelineUuid" : "2a072a53-4ee9-4763-8f19-b7421920c7d5",
+  "pipelineName" : "MAP_FACT_PIPELINE",
+  "parentFilterId" : 43
 }

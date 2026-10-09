@@ -1,5 +1,5 @@
 name=MAP_FACT_PIPELINE
-path=/Floor Mapping/MAP_FACT_PIPELINE
+path=/Enterprise Floor Mapping Demo/MAP_FACT_PIPELINE
 type=Pipeline
 uuid=2a072a53-4ee9-4763-8f19-b7421920c7d5
 version=V2

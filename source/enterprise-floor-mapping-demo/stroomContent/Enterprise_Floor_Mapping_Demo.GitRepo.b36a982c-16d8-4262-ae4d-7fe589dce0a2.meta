@@ -1,0 +1,21 @@
+{
+  "type" : "GitRepo",
+  "uuid" : "b36a982c-16d8-4262-ae4d-7fe589dce0a2",
+  "name" : "Enterprise Floor Mapping Demo",
+  "version" : "185582da-d263-4b16-a3ae-fc3cfb923db4",
+  "description" : "# Enterprise Floor Mapping Demo\n\nA worked example of the FloorMap document, showing people and equipment\nmoving around a site floor plan over time.\n\nContains:\n\n- A FloorMap doc, `Floor Map`, styled for background, area, computers,\n  gates and person layers.\n- Three Plan B SQL temporal stores: `map_mysql_store` holds the map facts\n  and the movement events, `location_mysql_store` and `person_mysql_store`\n  hold the location and person reference data.\n- Two feeds, `FACTS_FEED` for the map layout and `EVENTS_FEED` for the\n  movement events.\n- The pipelines and XSLTs that load each feed into the stores:\n  `FACTS_PIPELINE` with `FACTS_XSLT`, and `EVENTS_PIPELINE` with\n  `EVENTS_XSLT`.\n\nThe demo data is supplied separately as two XML files. Ingest\n`Facts.xml` into `FACTS_FEED` first to build the map, then `Events.xml`\ninto `EVENTS_FEED` to populate the movement events.\n\nIt is worth noting that 6 background objects are included in the test data.\nHowever the background images themselves are not. These will need to be added\nto the map's Assets tab then applied to the background objects.\n",
+  "contentStoreContentPackId" : "enterprise-floor-mapping-demo",
+  "url" : "https://github.com/stroomworks/stroom-content.git",
+  "credentialName" : "",
+  "branch" : "enterprise-floor-mapping",
+  "path" : "source/enterprise-floor-mapping-demo/stroomContent/Floor_Mapping.Folder.cc4c71dd-3603-4117-b11e-ba1386758fc6/",
+  "commit" : "47e368237a24c7445f0269745c81b51e198191e9",
+  "autoPush" : false,
+  "contentStoreMetadata" : {
+    "ownerId" : "stroomworks.com",
+    "ownerName" : "Stroomworks",
+    "ownerUrl" : "https://github.com/stroomworks",
+    "ownerDescription" : "Local development content store for Stroomworks demo content.\n",
+    "authContact" : "Contact the Stroomworks team.\n"
+  }
+}

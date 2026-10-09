@@ -1,8 +1,8 @@
 {
   "type" : "Feed",
-  "uuid" : "19fbaadc-c03e-4ff9-a3ec-a5955006b8ed",
-  "name" : "MAP_EVENT_FEED",
-  "version" : "f6b28870-823e-4608-abfb-7f587af7d4cd",
+  "uuid" : "32f13a3b-86d6-4330-ae35-eca2ef63c05c",
+  "name" : "MAP_FACT_FEED",
+  "version" : "9d97d9ce-60d3-4bf4-b2a9-c78eda8c0bcd",
   "description" : "",
   "classification" : "",
   "encoding" : "UTF-8",
@@ -14,5 +14,5 @@
   "schema" : "",
   "schemaVersion" : "",
   "status" : "RECEIVE",
-  "volumeGroup" : ""
+  "volumeGroup" : "Default Volume Group"
 }
